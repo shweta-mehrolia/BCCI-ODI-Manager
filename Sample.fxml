@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <right>
+      <AnchorPane prefHeight="448.0" prefWidth="654.0" style="-fx-background-color: #789abc;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="448.0" prefWidth="482.0" style="-fx-background-color: #123456;">
+               <children>
+                  <ImageView fitHeight="272.0" fitWidth="276.0" layoutX="104.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Desktop/BCCI-ODI_MANAGER%20images/BCCI_logo.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="77.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ODI Manager">
+                     <font>
+                        <Font name="Marlett" size="55.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Separator layoutX="478.0" orientation="VERTICAL" prefHeight="448.0" prefWidth="8.0" style="-fx-background-color: #edda64;" />
+            <Button layoutX="519.0" layoutY="224.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="Recent Updates" />
+            <Button layoutX="518.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#gotoLogin" prefHeight="36.0" prefWidth="105.0" text="Login" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
