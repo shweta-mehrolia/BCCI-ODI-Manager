@@ -1,0 +1,89 @@
+package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.sql.*;
+import com.sun.javafx.scene.accessibility.Action;
+import javafx.scene.*;
+import javafx.scene.control.*;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.input.*;
+import javafx.stage.Stage;
+
+
+public class SampleController implements Initializable {
+	
+	Connection conn=null;
+	@FXML
+	private TextField email;
+	
+	@FXML
+	private TextField password;
+	private Stage dialogStage;
+	private Scene scene;
+	
+	//private TextInputControl email;
+	//private TextInputControl email;
+	//private TextInputControl password;
+	@Override
+	public void initialize(URL url,ResourceBundle rb)
+	{
+		
+	    System.out.println("initialize");
+	   // PasswordField password;
+	}
+	
+	@FXML
+	public void test(MouseEvent event)
+	{
+		System.out.println("test");
+		try
+		{
+			System.out.println("enter try");
+			//TextInputControl email = null;
+			String em = email.getText().toString();
+			//TextInputControl password = null;
+			String pwd = password.getText().toString();
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("hi");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost/dbms?user=root&password=pucchi143");
+			PreparedStatement st1=conn.prepareStatement("select * from users where name=? and password=?");
+			st1.setString(1,em);
+			st1.setString(2,pwd);
+			System.out.println("ss");
+			ResultSet rs=st1.executeQuery();
+			if(rs.next())
+			{
+				infoBox("Login Successfull",null,"Success" );
+                Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("FXMLMenu.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+				System.out.println("hello");
+				//System.exit(0);
+			}
+			else
+			{
+				System.out.println("sorry");
+			}
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+
+	private void infoBox(String string, Object object, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+}
